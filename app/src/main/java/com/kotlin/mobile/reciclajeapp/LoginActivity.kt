@@ -53,5 +53,11 @@ class LoginActivity : AppCompatActivity() {
 
 
         }
+        val buttomNuevoUsuario = findViewById<Button>(R.id.buttomNuevoUsuario)
+        buttomNuevoUsuario.setOnClickListener {
+            val intent = Intent(this@LoginActivity, NewUserActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

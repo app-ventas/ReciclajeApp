@@ -29,7 +29,7 @@ interface LoginService {
 object RetrofitServicesFactory {
 
         //private const val BASE_URL = "http://localhost"
-        private const val BASE_URL = "http://10.0.2.2/"
+        private const val BASE_URL = "https://appventasglobal.com/"
 
 
         fun create(): LoginService {
