@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "811350042438",
+    "project_id": "kotlin-reciclaje-208d7",
+    "storage_bucket": "kotlin-reciclaje-208d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811350042438:android:e8a8104a98435fb7a72747",
+        "android_client_info": {
+          "package_name": "com.kotlin.mobile.reciclajeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYjJqY3Gdr2vc25ABlaFZYmyC2QBEdK4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
