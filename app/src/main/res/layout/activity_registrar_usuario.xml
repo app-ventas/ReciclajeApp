@@ -18,44 +18,38 @@
         android:layout_marginBottom="32dp"
         android:textColor="@color/black" />
 
-    <!-- Campo para el nombre del usuario -->
+    <!-- Campo para el nombre del usuario (se mostrará un error si está vacío en el código) -->
     <EditText
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre"
+        android:hint="Nombre (obligatorio)"
         android:inputType="textPersonName"
         android:padding="12dp"
         android:backgroundTint="@color/black"
-        android:layout_marginBottom="16dp"
-        android:importantForAccessibility="yes"
-        android:focusable="true" />
+        android:layout_marginBottom="16dp" />
 
     <!-- Campo para el email -->
     <EditText
         android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo electrónico"
+        android:hint="Correo electrónico (ejemplo@correo.com)"
         android:inputType="textEmailAddress"
         android:padding="12dp"
         android:backgroundTint="@color/black"
-        android:layout_marginBottom="16dp"
-        android:importantForAccessibility="yes"
-        android:focusable="true" />
+        android:layout_marginBottom="16dp" />
 
     <!-- Campo para la contraseña -->
     <EditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
+        android:hint="Contraseña (mínimo 6 caracteres)"
         android:inputType="textPassword"
         android:padding="12dp"
         android:backgroundTint="@color/black"
-        android:layout_marginBottom="32dp"
-        android:importantForAccessibility="yes"
-        android:focusable="true" />
+        android:layout_marginBottom="32dp" />
 
     <!-- Botón de registro -->
     <Button

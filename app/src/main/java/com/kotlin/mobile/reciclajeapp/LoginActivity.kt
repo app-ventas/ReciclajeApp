@@ -10,6 +10,9 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.kotlin.mobile.reciclajeapp.model.GenericCallback
+import com.kotlin.mobile.reciclajeapp.model.Usuario
+import com.kotlin.mobile.reciclajeapp.services.UsuarioServicioFirebase
 import com.kotlin.mobile.reciclajeapp.ui.RegistrarUsuario
 
 class LoginActivity : AppCompatActivity() {
@@ -43,12 +46,28 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val user = auth.currentUser
+                            val uid = user?.uid
+                            if (uid != null) {
 
-                            // Si el login es exitoso, ir a la siguiente actividad
-                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                            startActivity(intent)
-                            finish() // Opcional: Finaliza la actividad actual para que no se pueda volver con el botón de retroceso
+                                UsuarioServicioFirebase.consultarUsuario(uid, object : GenericCallback<Usuario?> {
+                                    override fun onSuccess(usuarioFirebase: Usuario?) {
 
+                                        // Si el login es exitoso, ir a la siguiente actividad
+                                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+
+                                        usuarioFirebase?.let {
+                                            intent.putExtra("usuario", it) // Agrega el objeto Usuario al Intent
+                                        }
+                                        startActivity(intent)
+                                        finish() // Opcional: Finaliza la actividad actual para que no se pueda volver con el botón de retroceso
+                                    }
+
+                                    override fun onError(error: String) {
+                                        // Aquí manejas lo que pasa cuando hay un error
+                                        println("Error al consultar usuario: $error")
+                                    }
+                                })
+                            }
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(baseContext,"Authentication failed.",Toast.LENGTH_SHORT,).show()
