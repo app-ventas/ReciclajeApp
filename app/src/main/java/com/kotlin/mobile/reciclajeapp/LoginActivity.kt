@@ -13,7 +13,6 @@ import com.google.firebase.ktx.Firebase
 import com.kotlin.mobile.reciclajeapp.model.GenericCallback
 import com.kotlin.mobile.reciclajeapp.model.Usuario
 import com.kotlin.mobile.reciclajeapp.services.UsuarioServicioFirebase
-import com.kotlin.mobile.reciclajeapp.ui.RegistrarUsuario
 
 class LoginActivity : AppCompatActivity() {
 
@@ -70,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
                             }
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(baseContext,"Authentication failed.",Toast.LENGTH_SHORT,).show()
+                            Toast.makeText(baseContext,"Autenticación falló.",Toast.LENGTH_SHORT,).show()
                         }
                     }
                 }

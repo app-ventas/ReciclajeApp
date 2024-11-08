@@ -11,4 +11,6 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
     <string name="crear_usuario"><u>crear usuario</u></string>
+    <string name="imagen">Imagen</string>
+    <string name="nDocumento">Número de documento</string>
 </resources>

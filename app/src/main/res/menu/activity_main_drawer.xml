@@ -17,6 +17,16 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
         <item
+            android:id="@+id/nav_lista_materiales"
+            android:icon="@drawable/materiales"
+            android:title="Lista Materiales" />
+
+        <item
+            android:id="@+id/nav_crear_reciclaje"
+            android:icon="@drawable/punto_reciclaje"
+            android:title="Crear punto de Reciclaje" />
+
+        <item
             android:id="@+id/nav_cerrar_sesion"
             android:icon="@drawable/cerrar_sesion"
             android:title="@string/cerrar_sesion" />

@@ -1,0 +1,64 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.material.CrearNuevoMaterialFragment">
+
+        <!-- Campo de entrada para el nombre del material -->
+        <EditText
+            android:id="@+id/input_nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del material"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="text" />
+
+        <!-- Campo de entrada para la URL del material -->
+        <EditText
+            android:id="@+id/input_url"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="URL de la imagen"
+            app:layout_constraintTop_toBottomOf="@+id/input_nombre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="textUri" />
+
+        <!-- Campo descripcion-->
+        <EditText
+            android:id="@+id/input_descripcion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Descripción del material"
+            app:layout_constraintTop_toBottomOf="@+id/input_url"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="text" />
+
+        <!-- Campo de entrada para los puntos del material -->
+        <EditText
+            android:id="@+id/input_puntos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Puntos del material"
+            app:layout_constraintTop_toBottomOf="@+id/input_descripcion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="number" />
+
+        <!-- Botón para guardar el material -->
+        <Button
+            android:id="@+id/btn_guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            app:layout_constraintTop_toBottomOf="@+id/input_puntos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

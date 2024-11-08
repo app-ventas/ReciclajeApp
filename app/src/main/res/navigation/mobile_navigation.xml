@@ -22,4 +22,16 @@
         android:name="com.kotlin.mobile.reciclajeapp.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_lista_materiales"
+        android:name="com.kotlin.mobile.reciclajeapp.ui.material.ListaMaterialesFragment"
+        android:label="Crear Nuevo Material"
+        tools:layout="@layout/fragment_lista_materiales" />
+
+    <fragment
+        android:id="@+id/nav_crear_reciclaje"
+        android:name="com.kotlin.mobile.reciclajeapp.ui.reciclaje.ReciclajeFragment"
+        android:label="Crear punto de Reciclaje"
+        tools:layout="@layout/fragment_reciclaje" />
 </navigation>

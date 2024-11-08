@@ -1,6 +1,7 @@
 package com.kotlin.mobile.reciclajeapp
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -15,8 +16,10 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
 import com.kotlin.mobile.reciclajeapp.databinding.ActivityMainBinding
 import com.kotlin.mobile.reciclajeapp.model.Usuario
 
@@ -32,14 +35,38 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Recuperar el objeto Usuario del Intent
-        obtenerUsuario()
+        val usuarioCache = UsuarioCache.obtenerUsuarioCache(this)
+
+        if(usuarioCache == null) {
+
+            // Recuperar el Usuario del Intent
+            val usuarioLogeado = obtenerUsuario()
+            if( usuarioLogeado == null ) {
+                // Si no hay usuario autenticado, redireccionar al Login
+                val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+                return;
+            }
+            else {
+                this.usuario = usuarioLogeado;
+                guardarUsuarioCache(baseContext,usuarioLogeado)
+            }
+
+        }
+        else {
+            this.usuario = usuarioCache
+        }
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            Snackbar.make(view, "Crea un nuevo material para recolectar", Snackbar.LENGTH_LONG)
+               .setAction("Action", null).show()
+
+            val navController = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
+                ?.findNavController()
+            navController?.navigate(R.id.nav_crear_reciclaje)
         }
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -48,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_lista_materiales
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -72,14 +99,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Recuperar el objeto Usuario del Intent
-    private fun obtenerUsuario() {
+    private fun obtenerUsuario() : Usuario? {
 
         val usuarioSerializable = intent.getSerializableExtra("usuario") as? Usuario
 
         // Verifica si el usuario es nulo antes de asignarlo
         if (usuarioSerializable != null) {
+
+            guardarUsuarioCache(baseContext,usuarioSerializable)
             this.usuario = usuarioSerializable
-            println("Usuario: ${this.usuario.nombre}")
 
             // Configurar el NavigationView
             val navView: NavigationView = binding.navView
@@ -89,14 +117,9 @@ class MainActivity : AppCompatActivity() {
             val bienvenidaUsuarioTextView: TextView = headerView.findViewById(R.id.tv_bienvenida_usuario)
             bienvenidaUsuarioTextView.text = "Bienvenido, ${usuario.nombre} !" // Establecer el texto con un saludo
 
-        } else {
-            println("No se recibió ningún usuario.")
-
-            // Si no hay parametro de uusario
-            val intent = Intent(this@MainActivity, LoginActivity::class.java)
-            startActivity(intent)
-            finish() // Opcional: Finaliza la actividad actual para que no se pueda volver con el botón de retroceso
         }
+
+        return usuarioSerializable;
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -118,6 +141,9 @@ class MainActivity : AppCompatActivity() {
                 // Cerrar sesión si el usuario confirma
                 FirebaseAuth.getInstance().signOut()
 
+                //borrar cache
+                UsuarioCache.borrarUsuarioCache(this)
+
                 // Redirigir a la pantalla de inicio de sesión
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
@@ -129,6 +155,15 @@ class MainActivity : AppCompatActivity() {
             }
             .create()
             .show()
+    }
+
+    private fun guardarUsuarioCache(context: Context, usuario: Usuario) {
+        val sharedPreferences = context.getSharedPreferences("mi_app_prefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val gson = Gson()
+        val usuarioJson = gson.toJson(usuario)
+        editor.putString("usuario", usuarioJson)
+        editor.apply() // o editor.commit()
     }
 
 }
