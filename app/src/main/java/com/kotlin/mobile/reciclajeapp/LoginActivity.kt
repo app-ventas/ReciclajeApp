@@ -3,6 +3,8 @@ package com.kotlin.mobile.reciclajeapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -27,6 +29,12 @@ class LoginActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val tvOlvidoContrasenia: TextView = findViewById(R.id.tv_olvido_contrasenia)
+        val text = "Olvidaste contraseña"
+        val spannableString = SpannableString(text)
+        spannableString.setSpan(UnderlineSpan(), 0, text.length, 0)
+        tvOlvidoContrasenia.text = spannableString
 
         val buttonLogin = findViewById<Button>(R.id.buttonLogin)
 
@@ -85,20 +93,16 @@ class LoginActivity : AppCompatActivity() {
 
 
         }
-        val buttomNuevoUsuario = findViewById<Button>(R.id.buttomNuevoUsuario)
+        val buttomNuevoUsuario = findViewById<Button>(R.id.buttonNuevoUsuario)
         buttomNuevoUsuario.setOnClickListener {
-            val intent = Intent(this@LoginActivity, RegistrarUsuario::class.java)
-            startActivity(intent)
-            finish()
+            iraRegistrarUsuario()
         }
     }
 
-    fun iraRegistrarUsuario(view: View) {
-
+    fun iraRegistrarUsuario() {
         // Si el login es exitoso, ir a la siguiente actividad
         val intent = Intent(this@LoginActivity, RegistrarUsuario::class.java)
         startActivity(intent)
         finish() // Opcional: Finaliza la actividad actual para que no se pueda volver con el botón de retroceso
-
     }
 }

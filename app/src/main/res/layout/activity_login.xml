@@ -22,19 +22,19 @@
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/logo_reciapp" />
+            app:srcCompat="@drawable/logos_plomero_azul" />
+
     </LinearLayout>
 
     <!-- Otro espacio para rellenar el 50% restante -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/rounded_background"
+        android:gravity="center"
         android:orientation="vertical"
-        android:gravity="center">
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
         <TextView
             android:id="@+id/Txtv_LogIn"
@@ -43,61 +43,72 @@
             android:gravity="center"
             android:text="Iniciar Sesión"
             android:textColor="@color/black"
-            android:textSize="48dp" />
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="32dp"
-            android:background="@drawable/rounded_input"
-            android:paddingLeft="3dp"
-            android:hint="Email"
-            android:inputType="text"
-            app:layout_constraintVertical_bias=".25" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="32dp"
-            android:layout_marginTop="15dp"
-            android:paddingLeft="3dp"
-            android:background="@drawable/rounded_input"
-            android:hint="Password"
-            android:inputType="textPassword"
-            app:layout_constraintVertical_bias=".20" />
+            android:textSize="24sp" />
 
         <!-- TextView para mostrar mensajes de error -->
         <TextView
             android:id="@+id/error_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
             android:gravity="center"
             android:textColor="@color/error_red"
             android:visibility="gone"
             android:text="Error message" />
 
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_input"
+            android:hint="Correo"
+            android:inputType="text"
+            android:padding="12dp"
+            app:layout_constraintVertical_bias=".25" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_input"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            app:layout_constraintVertical_bias=".20" />
+
+        <TextView
+            android:id="@+id/tv_olvido_contrasenia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Olvidaste contraseña"
+            android:textColor="@color/black" />
+
         <Button
             android:id="@+id/buttonLogin"
-            android:layout_width="227dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
+            android:text="Login"
             android:textColor="@color/black"
             android:backgroundTint="@color/colorPrimary"
-            android:text="Login" />
+            android:textStyle="bold"/>
 
         <Button
-            android:id="@+id/buttomNuevoUsuario"
-            android:layout_width="227dp"
-            android:layout_height="40dp"
+            android:id="@+id/buttonNuevoUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:onClick="iraRegistrarUsuario"
-            android:textColor="@color/black"
+            android:layout_marginBottom="12dp"
             android:backgroundTint="@color/colorPrimary"
             android:text="Regístrate"
-             />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
 
     </LinearLayout>

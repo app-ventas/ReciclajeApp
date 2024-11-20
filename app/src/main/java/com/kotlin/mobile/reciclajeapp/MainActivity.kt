@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
             val navController = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
                 ?.findNavController()
-            navController?.navigate(R.id.nav_crear_reciclaje)
+            navController?.navigate(R.id.nav_nuevo_punto_reciclaje)
         }
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -75,7 +75,9 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_lista_materiales
+                R.id.nav_home,
+                R.id.nav_gallery,
+                R.id.nav_lista_materiales
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

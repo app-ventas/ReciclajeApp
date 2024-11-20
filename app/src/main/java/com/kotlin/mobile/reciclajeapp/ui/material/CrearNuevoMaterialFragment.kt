@@ -73,6 +73,7 @@ class CrearNuevoMaterialFragment : Fragment() {
         val nuevoMaterial = Material(nombre = nombre, url = url, puntos = puntos, descripcion = descripcion)
         MaterialServicioFirebase.crearMaterial(nuevoMaterial, object : GenericCallback<Material?> {
             override fun onSuccess(result: Material?) {
+
                 // Mostrar mensaje de éxito
                 Toast.makeText(requireContext(), "Material guardado correctamente", Toast.LENGTH_SHORT).show()
 
@@ -88,9 +89,6 @@ class CrearNuevoMaterialFragment : Fragment() {
                 Toast.makeText(requireContext(), "Error al guardar material: $error", Toast.LENGTH_SHORT).show()
             }
         })
-
-
-
     }
 
 }

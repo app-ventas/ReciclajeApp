@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.3"
+        android:layout_weight="0.2"
         android:orientation="vertical"
         android:padding="10dp" >
 
@@ -22,7 +22,7 @@
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/logo_reciapp" />
+            app:srcCompat="@drawable/logos_plomero_azul" />
     </LinearLayout>
 
     <!-- Otro espacio para rellenar el 70% restante -->
@@ -36,104 +36,118 @@
         android:orientation="vertical"
         android:gravity="center">
 
-
-        <!-- Título de la página -->
-
-        <!-- Campo para el nombre del usuario (se mostrará un error si está vacío en el código) -->
-
-        <TextView
-            android:id="@+id/tv_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registro de Usuario"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/et_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre completo"
-            android:inputType="textPersonName"
-            android:padding="12dp"
-            android:background="@drawable/rounded_input"
-            android:layout_marginBottom="16dp" />
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:gravity="center">
 
-        <EditText
-            android:id="@+id/et_nDocumento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/nDocumento"
-            android:inputType="text"
-            android:padding="12dp"
-            android:background="@drawable/rounded_input"
-            android:layout_marginBottom="16dp" />
+            <!-- Campo para el nombre del usuario (se mostrará un error si está vacío en el código) -->
 
-        <EditText
-            android:id="@+id/et_ciudad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ciudad"
-            android:inputType="text"
-            android:padding="12dp"
-            android:background="@drawable/rounded_input"
-            android:layout_marginBottom="16dp" />
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text="Registro de Usuario"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <Spinner
-            android:id="@+id/spinnerRol"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre completo"
+                android:inputType="textPersonName"
+                android:padding="12dp"
+                android:background="@drawable/rounded_input"
+                android:layout_marginBottom="16dp" />
 
-        <!-- Campo para el email -->
-        <EditText
-            android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Correo electrónico (ejemplo@correo.com)"
-            android:inputType="textEmailAddress"
-            android:padding="12dp"
-            android:background="@drawable/rounded_input"
-            android:layout_marginBottom="16dp" />
+            <EditText
+                android:id="@+id/et_nDocumento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nDocumento"
+                android:inputType="number"
+                android:padding="12dp"
+                android:background="@drawable/rounded_input"
+                android:layout_marginBottom="16dp" />
 
-        <!-- Campo para la contraseña -->
-        <EditText
-            android:id="@+id/et_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contraseña (mínimo 6 caracteres)"
-            android:background="@drawable/rounded_input"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp" />
+            <EditText
+                android:id="@+id/et_ciudad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ciudad"
+                android:inputType="text"
+                android:padding="12dp"
+                android:background="@drawable/rounded_input"
+                android:layout_marginBottom="16dp" />
 
-        <!-- Campo para la contraseña -->
-        <EditText
-            android:id="@+id/et_password_verify"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Verifica tu contraseña"
-            android:background="@drawable/rounded_input"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:layout_marginBottom="32dp" />
+            <Spinner
+                android:id="@+id/spinnerRol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:background="@drawable/rounded_input"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/tvSpinnerError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/error_red"
+                android:visibility="gone"
+                android:text="Selecciona un rol en específico"
+                android:padding="4dp" />
+
+            <!-- Campo para el email -->
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:background="@drawable/rounded_input"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Campo para la contraseña -->
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña (mínimo 6 caracteres)"
+                android:background="@drawable/rounded_input"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Campo para la contraseña -->
+            <EditText
+                android:id="@+id/et_password_verify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Verifica tu contraseña"
+                android:background="@drawable/rounded_input"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp" />
 
 
+            <!-- Botón de registro -->
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:onClick="onRegisterClick"
+                android:text="Registrar"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
-
-        <!-- Botón de registro -->
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Registrar"
-            android:textColor="@color/black"
-            android:padding="12dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:textStyle="bold"
-            android:onClick="onRegisterClick" />
-
+        </LinearLayout>
 
     </LinearLayout>
 

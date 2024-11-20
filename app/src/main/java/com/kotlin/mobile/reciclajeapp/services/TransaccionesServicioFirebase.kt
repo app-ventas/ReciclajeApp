@@ -5,11 +5,12 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.kotlin.mobile.reciclajeapp.model.GenericCallback
+import com.kotlin.mobile.reciclajeapp.model.Material
 import com.kotlin.mobile.reciclajeapp.model.Transaccion
 
 object TransaccionesServicioFirebase {
 
-    fun consultarTransaccionPorDonador(uidDonante: String, callback: GenericCallback<List<Transaccion>>) {
+    fun consultarTransaccionPorDonador(uidDonante: String, callback: GenericCallback<List<Transaccion?>>) {
         val database = FirebaseDatabase.getInstance().reference
         val transaccionesRef = database.child("Transacciones")
 
@@ -18,43 +19,36 @@ object TransaccionesServicioFirebase {
 
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val transaccionesList = mutableListOf<Transaccion>()
+                val transaccionesList = mutableListOf<Transaccion?>()
 
-                // Iteramos sobre todos los hijos que coinciden con el uidDonante
-                for (transaccionSnapshot in snapshot.children) {
-                    val transaccion = transaccionSnapshot.getValue(Transaccion::class.java)
-                    if (transaccion != null) {
-                        transaccionesList.add(transaccion)
-                    }
+                // Iterar sobre cada hijo de "Materiales" y convertirlo a Material
+                for (materialSnapshot in snapshot.children) {
+                    val transaccion = materialSnapshot.getValue(Transaccion::class.java)
+                    transaccionesList.add(transaccion)
                 }
 
-                // Devolvemos la lista de transacciones al callback
-                callback.onSuccess(transaccionesList)
+                if (transaccionesList.isNotEmpty()) {
+                    callback.onSuccess(transaccionesList)
+                } else {
+                    callback.onError("No se encuentra la lista de transacciones")
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // En caso de error, devolvemos el mensaje de error
                 callback.onError(error.message)
             }
         })
+
+
     }
 
-    fun crearTransaccionDonante(uidDonante: String, fecha: String, hora: String, cantidad: Int, tipoMaterial: Int, callback: GenericCallback<Transaccion>) {
+    fun crearTransaccionDonante(transaccion: Transaccion, callback: GenericCallback<Transaccion>) {
 
         // Referencia a la base de datos de Firebase
         val database = FirebaseDatabase.getInstance().reference
 
         // Generar un ID único para la transacción
         val transaccionRef = database.child("Transacciones").push()
-
-        // Crear el objeto Transaccion con los datos proporcionados
-        val transaccion = Transaccion(
-            uidDonante = uidDonante,
-            fecha = fecha,
-            hora = hora,
-            cantidad = cantidad,
-            tipoMaterial = tipoMaterial
-        )
 
         // Almacenar la transacción en la base de datos
         transaccionRef.setValue(transaccion).addOnCompleteListener { task ->

@@ -1,12 +1,31 @@
 package com.kotlin.mobile.reciclajeapp.model
 
+
 data class Transaccion(
-    val uidDonante: String = "",      // UID del donante
-    val uidReciclador: String? = "",  // UID del reciclador, opcional
-    val fecha: String = "",           // Fecha de la transacción en formato string (YYYY/MM/DD)
-    val descripcion: String = "",     // Descripcion de la transacción
-    val hora: String = "",            // Hora de la transacción en formato string (HH24:MM:SS)
-    val cantidad: Int,                // Cantidad de material reciclado
-    val tipoMaterial: Int,            // Identificador del tipo de material (1=Plástico, 2=Vidrio, etc.)
-    val puntosGanados: Int? = null    // Puntos ganados por la transacción, opcional
-)
+    var uid: String? = null,
+    var uidDonante: String = "",
+    var uidReciclador: String? = null,
+    var fechaCreacion: String = "",
+    var fechaEntrega: String? = null,
+    var descripcion: String? = null,
+    var cantidad: Int = 0,
+    var unidadMedida: String = "",
+    var idTipoMaterial: String = "",
+    var puntosGanados: Int = 0,
+    var material: Material? = null
+) {
+    // Constructor sin argumentos explícito
+    constructor() : this(
+        uid = null,
+        uidDonante = "",
+        uidReciclador = null,
+        fechaCreacion = "",
+        fechaEntrega = null,
+        descripcion = null,
+        cantidad = 0,
+        unidadMedida = "",
+        idTipoMaterial = "",
+        puntosGanados = 0,
+        material = null
+    )
+}

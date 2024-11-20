@@ -29,14 +29,7 @@ object UsuarioServicioFirebase {
         })
     }
 
-    fun crearUsuario(uid: String, nombre: String, email: String, callback: GenericCallback<Usuario?>) {
-
-        val usuario = Usuario(
-            uid = uid,
-            nombre = nombre,
-            email = email,
-            saldo = 0
-        )
+    fun crearUsuario(usuario : Usuario, callback: GenericCallback<Usuario?>) {
 
         // Obtener la referencia de la base de datos
         val database = FirebaseDatabase.getInstance().reference

@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.kotlin.mobile.reciclajeapp.R
 import com.kotlin.mobile.reciclajeapp.model.Transaccion
 
-class TransaccionesAdapter(private val transaccionesList : ArrayList<Transaccion>): RecyclerView.Adapter<TransaccionesAdapter.TransaccionesHolder>() {
+class TransaccionesAdapter(private val transaccionesList : List<Transaccion>): RecyclerView.Adapter<TransaccionesAdapter.TransaccionesHolder>() {
 
     class TransaccionesHolder(itemView: View)  : RecyclerView.ViewHolder(itemView){
         val fecha : TextView = itemView.findViewById(R.id.textView)
@@ -30,12 +30,18 @@ class TransaccionesAdapter(private val transaccionesList : ArrayList<Transaccion
 
     override fun onBindViewHolder(holder: TransaccionesHolder, position: Int) {
         val currentItem = transaccionesList[position]
-        holder.fecha.text = currentItem.fecha
+        holder.fecha.text = currentItem.fechaCreacion
         holder.descripcion.text = currentItem.descripcion
 
-        // Cargar la imagen desde una URL usando Glide
-        Glide.with(holder.itemView.context)
-            .load("https://res.cloudinary.com/dtzmxhp9p/image/upload/v1728263996/newProduct_mjhvym.png")
+        var url = currentItem.material?.url
+        if(url == null){
+            url = "https://res.cloudinary.com/dtzmxhp9p/image/upload/v1728263996/newProduct_mjhvym.png";
+        }
+
+        // Usar Glide para cargar la imagen desde la URL
+        Glide.with(holder.imageView.context)
+            .load(url) // URL de la imagen
+            .placeholder(R.drawable.rounded_background) // Imagen de carga
             .into(holder.imageView)
 
     }
