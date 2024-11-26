@@ -14,7 +14,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="163dp"
+        android:layout_width="97dp"
         android:layout_height="wrap_content"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/tv_bienvenida_usuario"
-        android:layout_width="202dp"
+        android:layout_width="294dp"
         android:layout_height="83dp"
         android:text="@string/nav_header_subtitle" />
 </LinearLayout>

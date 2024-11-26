@@ -103,6 +103,6 @@ class LoginActivity : AppCompatActivity() {
         // Si el login es exitoso, ir a la siguiente actividad
         val intent = Intent(this@LoginActivity, RegistrarUsuario::class.java)
         startActivity(intent)
-        finish() // Opcional: Finaliza la actividad actual para que no se pueda volver con el botón de retroceso
+        //finish() // Opcional: Finaliza la actividad actual para que no se pueda volver con el botón de retroceso
     }
 }

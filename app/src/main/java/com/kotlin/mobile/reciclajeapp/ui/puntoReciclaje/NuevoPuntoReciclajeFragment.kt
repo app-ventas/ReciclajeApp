@@ -60,6 +60,7 @@ class NuevoPuntoReciclajeFragment : Fragment() {
                 val formato = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
                 val fechaCreacion = formato.format(fechaActual)
 
+
                 val cantidad = cantidadEditText.text.toString().toInt()
                 val unidadMedida = spinnerUnidadMedida.selectedItem.toString()
                 val descripcion = descripcionEditText.text.toString()
