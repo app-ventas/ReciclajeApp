@@ -14,7 +14,9 @@ class TransaccionesAdapter(private val transaccionesList : List<Transaccion>): R
 
     class TransaccionesHolder(itemView: View)  : RecyclerView.ViewHolder(itemView){
         val fecha : TextView = itemView.findViewById(R.id.textView)
-        val descripcion : TextView = itemView.findViewById(R.id.textView2)
+        val hora : TextView = itemView.findViewById(R.id.textView2)
+        val cantidad : TextView = itemView.findViewById(R.id.textView3)
+        val descripcion : TextView = itemView.findViewById(R.id.textView4)
         val imageView : ImageView = itemView.findViewById(R.id.image_TransaccionView);
     }
 
@@ -30,9 +32,14 @@ class TransaccionesAdapter(private val transaccionesList : List<Transaccion>): R
 
     override fun onBindViewHolder(holder: TransaccionesHolder, position: Int) {
         val currentItem = transaccionesList[position]
-        holder.fecha.text = currentItem.fechaCreacion
+        if(currentItem.fechaCreacion.length > 0) {
+            val part1 = currentItem.fechaCreacion.split(" ")[0]
+            val part2 = currentItem.fechaCreacion.split(" ")[1]
+            holder.fecha.text = part1.toString()
+            holder.hora.text = part2.toString()
+        }
+        holder.cantidad.text = currentItem.cantidad.toString() + ' '+ currentItem.unidadMedida.toString()
         holder.descripcion.text = currentItem.descripcion
-
         var url = currentItem.material?.url
         if(url == null){
             url = "https://res.cloudinary.com/dtzmxhp9p/image/upload/v1728263996/newProduct_mjhvym.png";
@@ -43,7 +50,6 @@ class TransaccionesAdapter(private val transaccionesList : List<Transaccion>): R
             .load(url) // URL de la imagen
             .placeholder(R.drawable.rounded_background) // Imagen de carga
             .into(holder.imageView)
-
     }
 
 }
