@@ -56,6 +56,12 @@ class MainActivity : AppCompatActivity() {
         }
         else {
             this.usuario = usuarioCache
+            // Cambiar el nombre en el encabezado de navegación
+            val navView: NavigationView = binding.navView
+            val headerView = navView.getHeaderView(0) // Obtener la vista del encabezado
+            val bienvenidaUsuarioTextView: TextView = headerView.findViewById(R.id.tv_bienvenida_usuario)
+            bienvenidaUsuarioTextView.text = "Bienvenido, ${usuario.nombre} !" // Establecer el texto con un saludo
+
         }
 
         setSupportActionBar(binding.appBarMain.toolbar)

@@ -20,11 +20,6 @@
             android:title="Lista Materiales" />
 
         <item
-            android:id="@+id/nav_puntos_reciclaje"
-            android:icon="@drawable/punto_reciclaje_ico"
-            android:title="Puntos de reciclaje" />
-
-        <item
             android:id="@+id/nav_cerrar_sesion"
             android:icon="@drawable/cerrar_sesion"
             android:title="@string/cerrar_sesion" />

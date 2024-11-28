@@ -61,7 +61,11 @@ class NuevoPuntoReciclajeFragment : Fragment() {
                 val fechaCreacion = formato.format(fechaActual)
 
 
-                val cantidad = cantidadEditText.text.toString().toInt()
+                var cantidad = 0;
+                if(cantidadEditText.text.length > 0) {
+                    cantidad = cantidadEditText.text.toString().toInt()
+                }
+
                 val unidadMedida = spinnerUnidadMedida.selectedItem.toString()
                 val descripcion = descripcionEditText.text.toString()
 
@@ -86,7 +90,7 @@ class NuevoPuntoReciclajeFragment : Fragment() {
                         bundle.putBoolean("scrollToEnd", true)
 
                         // Navegar a ListaMaterialesFragment y pasar el parametro bundle
-                        findNavController().navigate(R.id.nav_puntos_reciclaje, bundle)
+                        findNavController().navigate(R.id.nav_home, bundle)
                     }
 
                     override fun onError(error: String) {

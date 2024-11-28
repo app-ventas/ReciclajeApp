@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.kotlin.mobile.reciclajeapp.ui.home.HomeFragment"
+        android:name="com.kotlin.mobile.reciclajeapp.ui.puntoReciclaje.ListaPuntosReciclajeFragment"
         android:label="Página principal"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_lista_puntos_reciclaje" />
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -17,18 +17,11 @@
         android:label="Puntos"
         tools:layout="@layout/fragment_gallery" />
 
-
     <fragment
         android:id="@+id/nav_lista_materiales"
         android:name="com.kotlin.mobile.reciclajeapp.ui.material.ListaMaterialesFragment"
-        android:label="Crear Nuevo Material"
+        android:label="Lista de Materiales"
         tools:layout="@layout/fragment_lista_materiales" />
-
-    <fragment
-        android:id="@+id/nav_puntos_reciclaje"
-        android:name="com.kotlin.mobile.reciclajeapp.ui.puntoReciclaje.ListaPuntosReciclajeFragment"
-        android:label="Puntos de reciclaje"
-        tools:layout="@layout/fragment_lista_puntos_reciclaje" />
 
     <fragment
         android:id="@+id/nav_nuevo_punto_reciclaje"
